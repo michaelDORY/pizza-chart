@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import {BallTriangle} from "react-loader-spinner";
-import styled from "styled-components";
+import {BallTriangle} from 'react-loader-spinner';
+import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: center;
   width: 100%;
   height: 100vh;
-`
+`;
 
 const Loader: FC = () => {
   return (

@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import MainPage from './pages/MainPage';
-import {AppWrapper} from "./App.style";
+import {AppWrapper} from './App.style';
 
 const App: FC = () => {
   return (
@@ -8,6 +8,6 @@ const App: FC = () => {
       <MainPage/>
     </AppWrapper>
   );
-}
+};
 
 export default App;

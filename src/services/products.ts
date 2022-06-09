@@ -1,6 +1,6 @@
-import {BASE_URL} from "../utils/constrains";
-import {pricesGroups} from "../utils/pricesGroups";
-import {FetchedProduct, FetchedProducts, Product, UrlOptions} from "../utils/types";
+import {BASE_URL} from '../utils/constrains';
+import {pricesGroups} from '../utils/pricesGroups';
+import {FetchedProduct, FetchedProducts, Product, UrlOptions} from '../utils/types';
 
 export const getProducts = async (options?: UrlOptions): Promise<Product[]> => {
     const url = options ? `${BASE_URL}?skip=${options.skip}&limit=${options.limit}` : `${BASE_URL}?limit=100`;
@@ -15,4 +15,4 @@ export const getProducts = async (options?: UrlOptions): Promise<Product[]> => {
         }
         return {...item, priceGroup, type: '1'};
     });
-}
+};

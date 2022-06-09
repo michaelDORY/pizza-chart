@@ -1,12 +1,13 @@
-import React, {FC, useEffect, useRef, useState} from 'react';
-import styled from "styled-components";
-import Table from "../components/Table";
-import renderChart from "../functions/renderChart";
-import useHttp from "../hooks/useHttp";
-import {getProducts} from "../services/products";
-import {CONTAINER_CHART_NAME} from "../utils/constrains";
-import ErrorComponent from "../utils/ErrorComponent";
-import Loader from "../utils/Loader";
+import React, {FC, useEffect, useRef} from 'react';
+import styled from 'styled-components';
+import Table from '../components/Table';
+import renderChart from '../functions/renderChart';
+import useHttp from '../hooks/useHttp';
+import {getProducts} from '../services/products';
+import {CONTAINER_CHART_NAME} from '../utils/constrains';
+import ErrorComponent from '../utils/ErrorComponent';
+import Loader from '../utils/Loader';
+import {Product} from '../utils/types';
 
 const Container = styled.div`
   margin: 0 auto;
@@ -15,27 +16,27 @@ const Container = styled.div`
 `;
 
 const MainPage: FC = () => {
-  const {state: allProducts, loading, error} = useHttp(() => getProducts());
+  const {state: allProducts, loading, error} = useHttp<Product[]>(() => getProducts());
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if(containerRef.current?.innerHTML === '' && allProducts) {
+    if (allProducts) {
       renderChart(allProducts, CONTAINER_CHART_NAME);
     }
-  }, [allProducts, containerRef])
+  }, [allProducts]);
 
   if (loading) {
-    return <Loader/>
+    return <Loader/>;
   }
 
   if (error) {
-    return <ErrorComponent/>
+    return <ErrorComponent/>;
   }
 
   return (
     <Container>
-      <div id={CONTAINER_CHART_NAME} ref={containerRef}></div>
-      <Table allProducts={allProducts}/>
+      <div id={CONTAINER_CHART_NAME} ref={containerRef}/>
+      <Table allProducts={allProducts || []}/>
     </Container>
   );
 };

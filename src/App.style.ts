@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const AppWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-  
+
   *,
   *::before,
   *::after {
@@ -52,6 +52,6 @@ export const AppWrapper = styled.div`
   select {
     font: inherit;
   }
-  
+
   font-family: 'Montserrat', sans-serif;
 `;
